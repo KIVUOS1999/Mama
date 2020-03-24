@@ -22,7 +22,6 @@
         float: left;
         width: 40px;
         padding-right: 40px;
-        padding-top: 10px;
         background-color: rgba(255, 0, 0, 0.8);
         font-weight:bold;
         border-top-left-radius: 10px;
@@ -69,51 +68,20 @@
         font-size: 20px;
         font-family:'Courier New', Courier, monospace ;
         margin-top:40px;
-        margin-left: 20%;
+        margin-left: 50%;
         border-style: solid;
         border-color: black;
-        transition-property: background-color, color, width,margin-left;
+        transition-property: background-color, color, font-size;
 transition-duration: .5s;
 transition-timing-function: ease;
     }
 
-    .glow-on-hover:hover{
+
+    .res{
         background-color: black;
         color: white;
-        width: 100%;
-        margin-left: 0px;
-    }
-
-    .glow-on-hover1{
-        position: relative;
-        background-color:none;
-        color: black;
-        padding:5px;
-        padding-right:20px;
-        padding-left: 20px;
-        font-weight: bold;
-        font-size: 20px;
-        font-family:'Courier New', Courier, monospace ;
-        margin-top:40px;
-        margin-left: 20%;
-        border-style: solid;
-        border-color: black;
-        transition-property: background-color, color, width,margin-left;
-transition-duration: .5s;
-transition-timing-function: ease;
-    }
-
-    .glow-on-hover1:hover{
-        background-color: black;
-        color: white;
-        width: 100%;
-        margin-left: 0px;
-    
     }
 </style>
-
-
-
 
 
 
@@ -123,11 +91,12 @@ transition-timing-function: ease;
 </div>
 
 
+
 <div class="column">
     <table>
         <tr>
             <td>
-                k
+                Name
             </td>
         </tr>
         <tr>
@@ -145,16 +114,18 @@ transition-timing-function: ease;
                 <td>{{i.available_lengths}}</td>
             </tr>
         {% endfor %}
+        <tr>
+            <td>Amount Left</td>
+        </tr>
     </table>
 </div>
 
 <div class="column1">
-    <form action="calculate">
         <table>
             <tr>
-                {% for i in columns %}
+                {% for i in columns%}
                 <td>
-                    <p>{{i.name}}</p>
+                        <p>{{i.name}}</p>
                 </td>
                 {% endfor %}
                 <td>Total</td>
@@ -176,28 +147,24 @@ transition-timing-function: ease;
                 <td>left</td>
             </tr>
 
-                {% for i in rows %}
+                {% for i in middata %}
                     <tr>
-                        <div class="content"></div>
-                        {% for j in columns %}
-                            <td><input type="number" name="{{i.id}}{{j.id}}" placeholder="0"></td>
+                        {% for j in i %}
+                            <td>{{j}}</td>
                         {% endfor %}
-                            <td><input type="number" name="ans{{i.id}}" ></td>
-                            </div>
-                            </tr>
+                            
+                    </tr>
 
-                        {% endfor %}
+                {% endfor %}
+
+                <tr class="res">
+                    {% for i in quantities %}
+                        <td>
+                            {{i}}
+                        </td>
+                    {% endfor %}
+                </tr>
                 
 
                 
         </table>
-        
-        <button class="glow-on-hover" type="submit">Proceed</button>
-    </form>
-    <form action="autocalculate">
-        <button class="glow-on-hover1" type="submit">Auto-Calculate</button>
-    </form>
-</div>
-
-
-
