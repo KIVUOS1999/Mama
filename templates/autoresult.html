@@ -123,25 +123,25 @@ transition-timing-function: ease;
 <div class="column1">
         <table>
             <tr>
-                {% for i in columns%}
+                {% for i in name%}
                 <td>
-                        <p>{{i.name}}</p>
+                        <p>{{i}}</p>
                 </td>
                 {% endfor %}
                 <td>Total</td>
             </tr>
             <tr>
-                {% for i in columns %}
+                {% for i in length %}
                 <td>
-                    <p>{{i.length}}</p>
+                    <p>{{i}}</p>
                 </td>
                 {% endfor %}
                 <td>amount</td>
             </tr>
             <tr>
-                {% for i in columns %}
+                {% for i in quantity %}
                 <td>
-                    <p>{{i.quantity}}</p>
+                    <p>{{i}}</p>
                 </td>
                 {% endfor %}
                 <td>left</td>

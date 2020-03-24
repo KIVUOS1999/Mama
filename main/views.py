@@ -34,15 +34,18 @@ def autocalculate(request):
     columns = column.objects.all()
 
     m = []
+    name=[]
     lengths = []
     quantities = []
 
     for i in rows:
         m.append(int(i.available_lengths))
     for i in columns:
+        name.append(i.name)
         lengths.append(int(i.length))
         quantities.append(int(i.quantity))
 
+    
     n = len(lengths)
 
     for i in range(n-1):#this will sort the program
@@ -50,8 +53,10 @@ def autocalculate(request):
             if(lengths[j]<lengths[j+1]):
                 lengths[j],lengths[j+1] = lengths[j+1], lengths[j]
                 quantities[j], quantities[j+1] = quantities[j+1], quantities[j]
+                name[j],name[j+1] = name[j+1],name[j]
 
-    
+    length = lengths[:]
+    quantity = quantities[:]
     dd = []
     for c in range(len(m)):
         n = len(lengths)
@@ -70,4 +75,4 @@ def autocalculate(request):
             dds.append(used)
         dds.append(m[c])
         dd.append(dds)
-    return render(request, "autoresult.html", {"rows":rows,"columns":columns,"m":m,"lengths":lengths,"quantities":quantities,"middata":dd})
+    return render(request, "autoresult.html", {"rows":rows,"m":m,"lengths":lengths,"quantities":quantities,"middata":dd,"name":name,"length":length,"quantity":quantity})
